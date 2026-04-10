@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - Word & Logic</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] },
+                    colors: {
+                        dark: '#121212',
+                        darker: '#0a0a0a',
+                        card: '#1c1c1e',
+                        brandYellow: '#ffcc00'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #121212; color: white; }
+    </style>
+</head>
+<body class="antialiased selection:bg-brandYellow selection:text-black">
+
+    <nav class="fixed w-full z-50 bg-darker/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition">
+                    <span class="font-black text-2xl tracking-tight">WORD <span class="text-white/50">&</span> LOGIC</span>
+                </a>
+                <a href="index.html" class="text-sm font-semibold text-gray-300 hover:text-white transition flex items-center gap-2">
+                    &larr; Back to Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 px-4 max-w-4xl mx-auto">
+        <h1 class="text-4xl font-black mb-8 text-brandYellow">Terms & Conditions</h1>
+        <p class="text-gray-400 mb-8 text-sm">Last updated: April 2026</p>
+
+        <div class="space-y-8 text-gray-300 leading-relaxed">
+            <div>
+                <h2 class="text-2xl font-bold mb-4 text-white">1. Agreement to Terms</h2>
+                <p>By downloading or using the Word & Logic application, these terms will automatically apply to you. Please read them carefully before using the app.</p>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-bold mb-4 text-white">2. License to Use</h2>
+                <p>We grant you a personal, non-exclusive, non-transferable, revocable license to use the Application for your personal, non-commercial purposes, subject to these Terms & Conditions.</p>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-bold mb-4 text-white">3. Intellectual Property</h2>
+                <p>All copyright, trademarks, design rights, patents and other intellectual property rights (registered and unregistered) in and on the Application belong to Erkan Eroglu and/or third parties.</p>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-bold mb-4 text-white">4. Changes to Terms</h2>
+                <p>We may update our Terms and Conditions from time to time. You are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Terms and Conditions on this page.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/10 bg-darker py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="font-black text-xl">WORD & LOGIC</span>
+            <div class="text-gray-500 font-medium text-sm text-center md:text-left">
+                &copy; 2026 Erkan Eroglu. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

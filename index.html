@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word & Logic - 15+ Puzzles in One App</title>
+    <meta name="description" content="Find words, solve logic puzzles! Train your brain with more than 15 mini-games.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        game: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#121212',       
+                        darker: '#0a0a0a',     
+                        card: '#1c1c1e',       
+                        brandYellow: '#ffcc00',
+                        brandGreen: '#a2d149', 
+                        brandOrange: '#ff8800',
+                        brandRed: '#ff3b30',
+                        brandBlue: '#3b82f6',
+                        brandPurple: '#a855f7'
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            overflow-x: hidden;
+        }
+        /* Custom Scrollbar - Flat Design */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 0; }
+        ::-webkit-scrollbar-thumb:hover { background: #ffcc00; }
+        
+        /* JS Animation Classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+        
+        /* Utility for hiding pages */
+        .page-hidden { display: none !important; }
+    </style>
+</head>
+<body class="antialiased selection:bg-brandYellow selection:text-black">
+
+    <!-- Header / Navbar -->
+    <nav class="fixed w-full z-50 bg-darker border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#home" onclick="showPage('home')" class="flex items-center gap-3 hover:opacity-80 transition cursor-pointer">
+                    <img src="logo.png" alt="Word and Logic Logo" class="w-10 h-10 object-contain" />
+                    <span class="font-black text-2xl tracking-tight">WORD <span class="text-white/50">&</span> LOGIC</span>
+                </a>
+                <div class="hidden md:flex space-x-8" id="nav-links">
+                    <a href="#games" onclick="showPage('home')" class="text-gray-300 hover:text-white transition font-semibold">Games</a>
+                    <a href="#features" onclick="showPage('home')" class="text-gray-300 hover:text-white transition font-semibold">Features</a>
+                </div>
+                <div>
+                    <a href="https://apps.apple.com/us/app/id6761820736" target="_blank" onclick="showPage('home')" class="bg-brandYellow text-black font-bold px-6 py-2.5 hover:bg-white transition inline-block border-2 border-brandYellow hover:border-white">
+                        Play Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HOME PAGE ==================== -->
+    <div id="page-home" class="block">
+        
+        <!-- Hero Section -->
+        <section class="pt-32 pb-20 lg:pt-40 lg:pb-32 px-4 relative flex flex-col items-center justify-center min-h-[90vh] border-b-4 border-white/10 overflow-hidden">
+            <!-- Marquee Top -->
+            <div class="absolute top-28 left-0 w-full bg-brandYellow py-3 border-y-4 border-black z-0 transform -rotate-2 scale-110">
+                <div class="whitespace-nowrap animate-[marquee_20s_linear_infinite] flex gap-4 text-black font-black uppercase text-2xl tracking-widest">
+                    <span>WORD SEARCH • SUDOKU • CROSSWORD • WORD LINK • CRYPTOQUOTE • HASHTAG • TOP 6 • MAGIC HEXAGON • </span>
+                    <span>WORD SEARCH • SUDOKU • CROSSWORD • WORD LINK • CRYPTOQUOTE • HASHTAG • TOP 6 • MAGIC HEXAGON • </span>
+                </div>
+            </div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10 mt-16 fade-in-section">
+                
+                <!-- 3 Badges Top -->
+                <div class="flex flex-wrap justify-center gap-4 mb-10">
+                    <div class="inline-block bg-brandPurple text-black font-black uppercase px-6 py-2 border-4 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transform rotate-2">
+                        +16 Language
+                    </div>
+                    <div class="inline-block bg-brandGreen text-black font-black uppercase px-6 py-2 border-4 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transform -rotate-1">
+                        No Internet Required
+                    </div>
+                    <div class="inline-block bg-brandOrange text-black font-black uppercase px-6 py-2 border-4 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transform rotate-1">
+                        +10000 Puzzle
+                    </div>
+                </div>
+                
+                <h1 class="text-6xl md:text-8xl lg:text-[10rem] font-black leading-none mb-8 tracking-tighter uppercase text-white drop-shadow-[0_4px_0_rgba(0,0,0,1)]">
+                    Train Your <br>
+                    <span class="text-transparent" style="-webkit-text-stroke: 2px #ffcc00;">Brain</span> Daily.
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-bold leading-relaxed border-l-4 border-brandYellow pl-6 text-left bg-card p-6 shadow-[8px_8px_0px_0px_rgba(255,204,0,0.2)]">
+                    15+ completely free puzzle games. Find words, link letters, crack codes, and challenge your logic in one heavily packed app.
+                </p>
+                
+                <!-- Download Buttons -->
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center" id="download">
+                    <a href="https://apps.apple.com/us/app/id6761820736" target="_blank" class="flex items-center justify-center gap-4 bg-white text-black border-4 border-black px-8 py-4 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.3)] transition-all font-black text-lg w-full sm:w-auto">
+                        <svg class="w-8 h-8" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.3 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.3zM207.8 82.2c21.4-26.1 36.4-62.5 32.5-98.2-30.7 1.3-68.5 20.5-90.5 46.5-18.1 20.9-35.3 58-30.6 92.5 34.1 2.6 70.8-17 88.6-40.8z"/></svg>
+                        <div class="text-left">
+                            <div class="text-xs uppercase tracking-widest opacity-80">Download on the</div>
+                            <div class="text-2xl leading-none mt-1">App Store</div>
+                        </div>
+                    </a>
+                    <a href="#" class="flex items-center justify-center gap-4 bg-brandYellow text-black border-4 border-black px-8 py-4 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(255,204,0,0.5)] transition-all font-black text-lg w-full sm:w-auto">
+                        <svg class="w-8 h-8" viewBox="0 0 512 512" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+                        <div class="text-left">
+                            <div class="text-xs uppercase tracking-widest opacity-80">GET IT ON</div>
+                            <div class="text-2xl leading-none mt-1">Google Play</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Cards Section -->
+        <section id="games" class="py-24 bg-darker relative border-t-4 border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20 fade-in-section">
+                    <div class="inline-block bg-brandOrange text-black font-black uppercase px-4 py-1 border-2 border-black mb-4">15+ Game Modes</div>
+                    <h2 class="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tighter">Explore The Puzzles</h2>
+                    <p class="text-gray-400 font-bold text-xl max-w-2xl mx-auto">Discover a vast collection of carefully crafted mind games designed to push your logic and vocabulary to the limit.</p>
+                </div>
+
+                <!-- CSS Grid for Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="game-cards-container">
+                    <!-- JS will populate cards here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 px-4">
+            <div class="max-w-7xl mx-auto fade-in-section">
+                <div class="bg-dark border-4 border-white/10 p-8 lg:p-16 flex flex-col lg:flex-row gap-16 items-center">
+                    <div class="lg:w-1/2">
+                        <h2 class="text-3xl md:text-5xl font-black mb-8 uppercase">Why <span class="text-brandYellow">Word & Logic?</span></h2>
+                        <ul class="space-y-8">
+                            <li class="flex items-start gap-6">
+                                <div class="w-14 h-14 bg-darker border-2 border-brandGreen flex items-center justify-center flex-shrink-0 text-brandGreen font-black text-xl">1</div>
+                                <div>
+                                    <h4 class="text-xl font-black mb-2 uppercase">All in One Place</h4>
+                                    <p class="text-gray-400 font-semibold leading-relaxed">Instead of downloading different games, get all your favorite puzzles in one comprehensive app.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-6">
+                                <div class="w-14 h-14 bg-darker border-2 border-brandYellow flex items-center justify-center flex-shrink-0 text-brandYellow font-black text-xl">2</div>
+                                <div>
+                                    <h4 class="text-xl font-black mb-2 uppercase">Play Offline</h4>
+                                    <p class="text-gray-400 font-semibold leading-relaxed">Keep playing anywhere you want, on the subway or plane, without needing an internet connection.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-6">
+                                <div class="w-14 h-14 bg-darker border-2 border-brandOrange flex items-center justify-center flex-shrink-0 text-brandOrange font-black text-xl">3</div>
+                                <div>
+                                    <h4 class="text-xl font-black mb-2 uppercase">Train Your Brain</h4>
+                                    <p class="text-gray-400 font-semibold leading-relaxed">Strengthen your memory and logic skills with daily updated difficulty levels.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lg:w-1/2 w-full bg-brandYellow text-black p-10 lg:p-14 flex flex-col items-center justify-center text-center shadow-[16px_16px_0px_0px_#333333]">
+                        <div class="font-black text-8xl md:text-9xl tracking-tighter mb-2">15+</div>
+                        <div class="text-2xl md:text-3xl font-black mb-12 uppercase">Game Modes</div>
+                        
+                        <div class="w-full mb-10 grid grid-cols-2 gap-3">
+                            <div class="border-4 border-black bg-white p-3 font-black uppercase text-xs md:text-sm shadow-[4px_4px_0px_0px_#000] flex items-center justify-center hover:-translate-y-1 transition-transform cursor-default">
+                                Daily Puzzles
+                            </div>
+                            <div class="border-4 border-black bg-white p-3 font-black uppercase text-xs md:text-sm shadow-[4px_4px_0px_0px_#000] flex items-center justify-center hover:-translate-y-1 transition-transform cursor-default">
+                                No WiFi
+                            </div>
+                            <div class="col-span-2 border-4 border-black bg-white p-3 font-black uppercase text-xs md:text-sm shadow-[4px_4px_0px_0px_#000] flex items-center justify-center hover:-translate-y-1 transition-transform cursor-default">
+                                10,000+ Levels
+                            </div>
+                        </div>
+                        
+                        <a href="https://apps.apple.com/us/app/id6761820736" target="_blank" class="w-full bg-black text-white font-black text-lg uppercase py-5 hover:bg-gray-900 transition">
+                            Start Playing Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div> <!-- End Home Page -->
+
+    <!-- ==================== PRIVACY POLICY PAGE ==================== -->
+    <div id="page-privacy" class="page-hidden">
+        <section class="pt-32 pb-20 px-4 max-w-4xl mx-auto min-h-screen">
+            <h1 class="text-4xl font-black mb-8 text-brandYellow">Privacy Policy</h1>
+            <p class="text-gray-400 mb-8 text-sm">Last updated: April 2026</p>
+
+            <div class="space-y-8 text-gray-300 leading-relaxed">
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-white">1. Introduction</h2>
+                    <p>Welcome to Word & Logic. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you use our mobile application and website.</p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-white">2. Data We Collect</h2>
+                    <p>We may collect, use, store and transfer different kinds of data, including:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li><strong>Usage Data:</strong> Information about how you use our app, such as game progress, scores, and preferences.</li>
+                        <li><strong>Device Data:</strong> Includes the type of mobile device you use, a unique device identifier, operating system, and mobile network information.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-white">3. How We Use Your Data</h2>
+                    <p>We use the data collected strictly for improving the application experience, providing customer support, and understanding how our features are utilized to bring better updates.</p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-white">4. Contact Us</h2>
+                    <p>If you have any questions about this Privacy Policy, you can contact us at: support@wordandlogic.example.com</p>
+                </div>
+            </div>
+        </section>
+    </div> <!-- End Privacy Page -->
+
+    <!-- ==================== TERMS & CONDITIONS PAGE ==================== -->
+    <div id="page-terms" class="page-hidden">
+        <section class="pt-32 pb-20 px-4 max-w-4xl mx-auto min-h-screen">
+            <h1 class="text-4xl font-black mb-8 text-brandYellow">Terms & Conditions</h1>
+            <p class="text-gray-400 mb-8 text-sm">Last updated: April 2026</p>
+
+            <div class="space-y-8 text-gray-300 leading-relaxed">
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-white">1. Agreement to Terms</h2>
+                    <p>By downloading or using the Word & Logic application, these terms will automatically apply to you. Please read them carefully before using the app.</p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-white">2. License to Use</h2>
+                    <p>We grant you a personal, non-exclusive, non-transferable, revocable license to use the Application for your personal, non-commercial purposes, subject to these Terms & Conditions.</p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-white">3. Intellectual Property</h2>
+                    <p>All copyright, trademarks, design rights, patents and other intellectual property rights (registered and unregistered) in and on the Application belong to Erkan Eroglu and/or third parties.</p>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-white">4. Changes to Terms</h2>
+                    <p>We may update our Terms and Conditions from time to time. You are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Terms and Conditions on this page.</p>
+                </div>
+            </div>
+        </section>
+    </div> <!-- End Terms Page -->
+
+    <!-- Footer -->
+    <footer class="border-t-4 border-white/10 bg-darker py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <span class="font-black text-2xl tracking-tighter">WORD & LOGIC</span>
+            </div>
+            <div class="text-gray-500 font-bold text-sm text-center md:text-left">
+                &copy; 2026 Erkan Eroglu. All rights reserved.
+            </div>
+            <div class="flex space-x-6 font-bold text-sm">
+                <a href="#" onclick="showPage('home')" class="text-gray-400 hover:text-white transition uppercase">Support</a>
+                <a href="#privacy" onclick="showPage('privacy')" class="text-gray-400 hover:text-white transition uppercase">Privacy</a>
+                <a href="#terms" onclick="showPage('terms')" class="text-gray-400 hover:text-white transition uppercase">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts for Interactivity -->
+    <script>
+        // --- 1. Page Routing System ---
+        function showPage(pageId) {
+            // Hide all pages
+            document.getElementById('page-home').classList.add('page-hidden');
+            document.getElementById('page-privacy').classList.add('page-hidden');
+            document.getElementById('page-terms').classList.add('page-hidden');
+            
+            // Show requested page
+            document.getElementById('page-' + pageId).classList.remove('page-hidden');
+            
+            // Manage Nav links visibility
+            if(pageId !== 'home') {
+                document.getElementById('nav-links').classList.add('hidden');
+            } else {
+                document.getElementById('nav-links').classList.remove('hidden');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Handle initial load based on URL hash
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (['home', 'privacy', 'terms'].includes(hash)) {
+                showPage(hash);
+            } else {
+                showPage('home');
+            }
+        });
+
+        // --- 2. Data for Games ---
+        const gamesData = [
+            {
+                id: 'word-search',
+                name: 'Word Search',
+                badge: 'FIND THE HIDDEN WORDS',
+                color: '#a2d149',
+                desc: 'Find words in the list by swiping letters (horizontally, vertically, or diagonally). The level is completed when you find all the words!',
+                shape: `<div class="h-32 w-full bg-darker border-4 border-black flex flex-col justify-center gap-3 p-6 mb-8 shadow-[4px_4px_0px_0px_#a2d149] transition-transform group-hover:-translate-y-1 relative overflow-hidden">
+                            <div class="w-full h-3 bg-white/10"></div>
+                            <div class="w-4/5 h-6 bg-[#a2d149] border-2 border-black relative"><div class="absolute inset-0 bg-black/10 w-1/4"></div></div>
+                            <div class="w-2/3 h-3 bg-white/10"></div>
+                        </div>`
+            },
+            {
+                id: 'crossword',
+                name: 'Crossword',
+                badge: 'SOLVE FUN CROSSWORDS',
+                color: '#ff8800',
+                desc: 'Read the clues and enter letters from the keyboard to find the words. Intersecting letters help you find other words!',
+                shape: `<div class="h-32 w-full bg-darker border-4 border-black flex items-center justify-center mb-8 shadow-[4px_4px_0px_0px_#ff8800] transition-transform group-hover:-translate-y-1 relative">
+                            <div class="absolute w-6 h-20 bg-white border-2 border-black flex flex-col"><div class="h-1/3 border-b-2 border-black"></div><div class="h-1/3 border-b-2 border-black bg-[#ff8800]"></div></div>
+                            <div class="absolute w-20 h-6 bg-white border-2 border-black flex"><div class="w-1/3 border-r-2 border-black"></div><div class="w-1/3 border-r-2 border-black bg-[#ff8800]"></div></div>
+                        </div>`
+            },
+            {
+                id: 'word-link',
+                name: 'Word Link',
+                badge: 'LINK THE LETTERS',
+                color: '#ffcc00',
+                desc: 'Swipe the letters in the circle in order to derive meaningful words. The words you find will be placed in the hidden puzzle.',
+                shape: `<div class="h-32 w-full bg-darker border-4 border-black flex flex-col items-center justify-center gap-2 mb-8 shadow-[4px_4px_0px_0px_#ffcc00] transition-transform group-hover:-translate-y-1">
+                            <div class="flex gap-1"><div class="w-4 h-4 bg-white border-2 border-black"></div><div class="w-4 h-4 bg-[#ffcc00] border-2 border-black"></div><div class="w-4 h-4 bg-white border-2 border-black"></div></div>
+                            <div class="w-12 h-12 rounded-full border-4 border-black relative group-hover:animate-[spin_4s_linear_infinite] mt-1">
+                                <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-2 border-black rounded-full"></div>
+                                <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-2 border-black rounded-full"></div>
+                                <div class="absolute -left-1.5 top-1/2 -translate-y-1/2 w-4 h-4 bg-[#ffcc00] border-2 border-black rounded-full"></div>
+                                <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-black rounded-full"></div>
+                            </div>
+                        </div>`
+            },
+            {
+                id: 'sudoku',
+                name: 'Sudoku',
+                badge: 'TRAIN YOUR BRAIN',
+                color: '#3b82f6',
+                desc: 'Sudoku is played on a 9x9 grid. Your goal is to fill the empty cells with numbers from 1 to 9.',
+                shape: `<div class="h-32 w-full bg-darker border-4 border-black flex items-center justify-center mb-8 shadow-[4px_4px_0px_0px_#3b82f6] transition-transform group-hover:-translate-y-1">
+                            <div class="grid grid-cols-3 gap-1 bg-white p-1 w-20 h-20 border-2 border-black">
+                                <div class="bg-dark"></div><div class="bg-[#3b82f6]"></div><div class="bg-dark"></div>
+                                <div class="bg-dark"></div><div class="bg-dark"></div><div class="bg-[#3b82f6]"></div>
+                                <div class="bg-[#3b82f6]"></div><div class="bg-dark"></div><div class="bg-dark"></div>
+                            </div>
+                        </div>`
+            },
+            {
+                id: 'cryptoquote',
+                name: 'Cryptoquote',
+                badge: 'CRACK THE CODE',
+                color: '#a855f7',
+                desc: 'Each number represents a different letter. Use the keyboard below to find and place the correct letters to reveal the hidden sentence.',
+                shape: `<div class="h-32 w-full bg-darker border-4 border-black flex items-center justify-center gap-3 mb-8 shadow-[4px_4px_0px_0px_#a855f7] transition-transform group-hover:-translate-y-1">
+                            <div class="flex flex-col items-center"><div class="text-[10px] font-black text-[#a855f7] mb-1">1</div><div class="w-8 h-8 bg-dark border-2 border-[#a855f7]"></div></div>
+                            <div class="flex flex-col items-center"><div class="text-[10px] font-black text-white mb-1">2</div><div class="w-8 h-8 bg-white border-2 border-black"></div></div>
+                            <div class="flex flex-col items-center"><div class="text-[10px] font-black text-[#a855f7] mb-1">3</div><div class="w-8 h-8 bg-dark border-2 border-[#a855f7]"></div></div>
+                        </div>`
+            },
+            {
+                id: 'word-groups',
+                name: 'Word Groups',
+                badge: 'SORT THE BOARD',
+                color: '#ff3b30',
+                desc: 'Sort the 16 words on the board into 4 groups based on their common features. Each group contains 4 words belonging to the same category.',
+                shape: `<div class="h-32 w-full bg-darker border-4 border-black flex items-center justify-center mb-8 shadow-[4px_4px_0px_0px_#ff3b30] transition-transform group-hover:-translate-y-1">
+                            <div class="grid grid-cols-2 gap-2"><div class="w-8 h-8 bg-[#ff3b30] border-2 border-black"></div><div class="w-8 h-8 bg-white border-2 border-black"></div><div class="w-8 h-8 bg-[#ff3b30] border-2 border-black"></div><div class="w-8 h-8 bg-white border-2 border-black"></div></div>
+                        </div>`
+            },
+            {
+                id: 'hashtag',
+                name: 'Hashtag',
+                badge: 'UNSCRAMBLE LETTERS',
+                color: '#ffcc00',
+                desc: 'Drag and drop letters to form and rearrange horizontal and vertical words. Pay attention to the intersecting letters!',
+                shape: `<div class="h-32 w-full bg-darker border-4 border-black flex items-center justify-center mb-8 shadow-[4px_4px_0px_0px_#ffcc00] transition-transform group-hover:-translate-y-1">
+                            <div class="grid grid-cols-5 gap-1 p-2">
+                                <div class="w-4 h-4 opacity-0"></div><div class="w-4 h-4 bg-[#ffcc00] border-2 border-black"></div><div class="w-4 h-4 opacity-0"></div><div class="w-4 h-4 bg-[#ffcc00] border-2 border-black"></div><div class="w-4 h-4 opacity-0"></div>
+                                <div class="w-4 h-4 bg-white border-2 border-black"></div><div class="w-4 h-4 bg-[#ffcc00] border-2 border-black"></div><div class="w-4 h-4 bg-white border-2 border-black"></div><div class="w-4 h-4 bg-[#ffcc00] border-2 border-black"></div><div class="w-4 h-4 bg-white border-2 border-black"></div>
+                                <div class="w-4 h-4 opacity-0"></div><div class="w-4 h-4 bg-[#ffcc00] border-2 border-black"></div><div class="w-4 h-4 opacity-0"></div><div class="w-4 h-4 bg-[#ffcc00] border-2 border-black"></div><div class="w-4 h-4 opacity-0"></div>
+                                <div class="w-4 h-4 bg-white border-2 border-black"></div><div class="w-4 h-4 bg-[#ffcc00] border-2 border-black"></div><div class="w-4 h-4 bg-white border-2 border-black"></div><div class="w-4 h-4 bg-[#ffcc00] border-2 border-black"></div><div class="w-4 h-4 bg-white border-2 border-black"></div>
+                                <div class="w-4 h-4 opacity-0"></div><div class="w-4 h-4 bg-[#ffcc00] border-2 border-black"></div><div class="w-4 h-4 opacity-0"></div><div class="w-4 h-4 bg-[#ffcc00] border-2 border-black"></div><div class="w-4 h-4 opacity-0"></div>
+                            </div>
+                        </div>`
+            },
+            {
+                id: 'word-guess',
+                name: 'Word Guess',
+                badge: 'GUESS THE WORD',
+                color: '#a2d149',
+                desc: 'You have 6 chances to find the hidden word. After each guess, the color of the tiles will change to give you clues.',
+                shape: `<div class="h-32 w-full bg-darker border-4 border-black flex items-center justify-center gap-1 mb-8 shadow-[4px_4px_0px_0px_#a2d149] transition-transform group-hover:-translate-y-1">
+                            <div class="w-8 h-8 bg-[#a2d149] border-2 border-black"></div><div class="w-8 h-8 bg-[#ffcc00] border-2 border-black"></div><div class="w-8 h-8 bg-dark border-2 border-white/20"></div><div class="w-8 h-8 bg-dark border-2 border-white/20"></div>
+                        </div>`
+            },
+            {
+                id: 'top-6',
+                name: 'Top 6',
+                badge: 'GUESS TOP ANSWERS',
+                color: '#ff8800',
+                desc: 'Try to find the most popular answers to the given question. Enter your guess using the keyboard and press the Submit button.',
+                shape: `<div class="h-32 w-full bg-darker border-4 border-black flex flex-col justify-center gap-2 mb-8 px-6 shadow-[4px_4px_0px_0px_#ff8800] transition-transform group-hover:-translate-y-1">
+                            <div class="w-full h-4 bg-[#ff8800] border-2 border-black"></div><div class="w-4/5 h-4 bg-white border-2 border-black"></div><div class="w-3/5 h-4 bg-white/20"></div>
+                        </div>`
+            },
+            {
+                id: 'magic-hexagon',
+                name: 'Magic Hexagon',
+                badge: 'REACH THE TARGET',
+                color: '#3b82f6',
+                desc: 'The sum of the hexagons in horizontal and diagonal rows must be exactly equal to the Target Sum indicated on the screen.',
+                shape: `<div class="h-32 w-full bg-darker border-4 border-black flex flex-col items-center justify-center mb-8 shadow-[4px_4px_0px_0px_#3b82f6] transition-transform group-hover:-translate-y-1">
+                            <div class="flex justify-center -mb-2">
+                                <svg class="w-6 h-7 overflow-visible mx-0.5" viewBox="0 0 24 28"><polygon points="12,0 24,7 24,21 12,28 0,21 0,7" fill="white" stroke="black" stroke-width="2"/></svg>
+                                <svg class="w-6 h-7 overflow-visible mx-0.5" viewBox="0 0 24 28"><polygon points="12,0 24,7 24,21 12,28 0,21 0,7" fill="#1c1c1e" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></svg>
+                            </div>
+                            <div class="flex justify-center z-10">
+                                <svg class="w-6 h-7 overflow-visible mx-0.5" viewBox="0 0 24 28"><polygon points="12,0 24,7 24,21 12,28 0,21 0,7" fill="#1c1c1e" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></svg>
+                                <svg class="w-6 h-7 overflow-visible mx-0.5" viewBox="0 0 24 28"><polygon points="12,0 24,7 24,21 12,28 0,21 0,7" fill="#3b82f6" stroke="black" stroke-width="2"/></svg>
+                                <svg class="w-6 h-7 overflow-visible mx-0.5" viewBox="0 0 24 28"><polygon points="12,0 24,7 24,21 12,28 0,21 0,7" fill="white" stroke="black" stroke-width="2"/></svg>
+                            </div>
+                            <div class="flex justify-center -mt-2">
+                                <svg class="w-6 h-7 overflow-visible mx-0.5" viewBox="0 0 24 28"><polygon points="12,0 24,7 24,21 12,28 0,21 0,7" fill="white" stroke="black" stroke-width="2"/></svg>
+                                <svg class="w-6 h-7 overflow-visible mx-0.5" viewBox="0 0 24 28"><polygon points="12,0 24,7 24,21 12,28 0,21 0,7" fill="#1c1c1e" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></svg>
+                            </div>
+                        </div>`
+            }
+        ];
+
+        // --- 3. DOM Rendering for Cards ---
+        const gameCardsContainer = document.getElementById('game-cards-container');
+
+        function renderGameCards() {
+            gamesData.forEach((game) => {
+                const card = document.createElement('div');
+                card.className = 'fade-in-section group bg-card border-4 border-white/10 p-8 flex flex-col hover:-translate-y-2 transition-transform duration-300';
+                
+                card.onmouseover = () => {
+                    card.style.boxShadow = `8px 8px 0px 0px ${game.color}`;
+                    card.style.borderColor = game.color;
+                };
+                card.onmouseout = () => {
+                    card.style.boxShadow = 'none';
+                    card.style.borderColor = 'rgba(255,255,255,0.1)';
+                };
+
+                card.innerHTML = `
+                    <div class="mb-6 inline-block border-2 px-3 py-1 font-black text-xs uppercase self-start" style="border-color: ${game.color}; color: ${game.color}">
+                        ${game.badge}
+                    </div>
+                    ${game.shape}
+                    <h3 class="text-3xl font-black mb-4 uppercase text-white tracking-tighter">${game.name}</h3>
+                    <p class="text-gray-400 font-bold leading-relaxed flex-grow text-sm">${game.desc}</p>
+                `;
+                
+                gameCardsContainer.appendChild(card);
+            });
+        }
+        renderGameCards();
+
+        // --- 4. Scroll Animations ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-section').forEach((section) => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
